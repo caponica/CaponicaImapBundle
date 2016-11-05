@@ -40,10 +40,10 @@ you will need to define the parameters and then the service itself.
 ``` yaml
 # app/config/parameters.yml
 your_imap_config:
-    server:             {imap.gmail.com:993/imap/ssl}INBOX
+    imapPath:           {imap.gmail.com:993/imap/ssl}INBOX
     username:           you@gmail.com
     password:           your_password
-    local_directory:    /path/to/folder
+    directory:          /path/to/folder
 ```
 
 ``` yaml

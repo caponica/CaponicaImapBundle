@@ -1,6 +1,6 @@
 <?php
 
-namespace CaponicaImap\Service;
+namespace Caponica\ImapBundle\Service;
 
 use PhpImap\Mailbox;
 
