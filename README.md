@@ -40,7 +40,7 @@ you will need to define the parameters and then the service itself.
 ``` yaml
 # app/config/parameters.yml
 your_imap_config:
-    imapPath:           {imap.gmail.com:993/imap/ssl}INBOX
+    imapPath:           '{imap.gmail.com:993/imap/ssl}INBOX'
     username:           you@gmail.com
     password:           your_password
     directory:          /path/to/folder
@@ -49,7 +49,7 @@ your_imap_config:
 ``` yaml
 # services.yml
     caponica_imap_box:
-        class:      %caponica_imap.class%
+        class:          Caponica\ImapBundle\Service\CaponicaImap
         calls:
             - [ setConfig, [ %your_imap_config_box% ]]
 ```
@@ -60,6 +60,6 @@ Usage
 
 To access the service, just reference it by the service name you defined above. E.g., from a controller:
 
-    /** @var CaponicaAmazonMwsComplete\ClientPool\MwsClientPool $mwsClientPoolUk */
-    $imapMailbox = $this->container->get('caponica_imap_box');
-    $mailsIds = $mailbox->searchMailbox('ALL');
+    $caponicaImap = $this->container->get('caponica_imap_box');
+    $mailbox = $this->caponicaImap->getImapMailbox();
+    $mailsIds = $mailbox->sortMails(SORTDATE);
